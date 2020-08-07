@@ -21,9 +21,19 @@ namespace HelloWorld {
                 if(itemExists)
                 {
                     Console.WriteLine($"would you like to pick {itemName} up?...(Y/N)");
-                    Console.ReadLine();
+                    var itemPrompt = Console.ReadLine ().ToUpper ();
+
+                    if(itemPrompt == "Y")
+                    {
+                       hasKey = true;
+                       Console.WriteLine("you now have a " + itemName);
+
+                       worldItems.Remove(playersPosition.ToString());
+                    }
                     
                 }
+
+                
 
                 var newPosition = PlayerControls (new Position (playersPosition.X, playersPosition.Y));
                 var mapTileExists = worldMap.TryGetValue (newPosition.ToString (), out string value);
